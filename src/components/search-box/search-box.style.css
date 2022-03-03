@@ -1,0 +1,19 @@
+.search-input {
+    border: none;
+    border-bottom: 1px solid transparent;
+    text-align: center;
+    margin: 2vh auto 2vh;
+    display: flex;
+    padding: 5px 2px;
+    color: #858585;
+}
+.search-input:focus {
+    outline: none;
+    border-bottom: 1px solid #cbd3d3;
+}
+.search-input:focus::placeholder {
+    color: transparent;
+}
+.search-input::placeholder {
+    color: #cbd3d3;
+}
