@@ -4,7 +4,9 @@ import SearchBox from "./components/search-box/search-box.component";
 
 import React from "react";
 
-let baseLink = "https://kitsu.io/api/edge/anime?filter[text]=";
+let baseLink =
+    "https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0&filter[text]=";
+// "https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0&filter[text]=";
 let searchValue = "";
 
 class App extends React.Component {
@@ -35,6 +37,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
+                <h1 className="app-name">
+                    Ani<span>List</span>
+                </h1>
                 <SearchBox onSearchChange={this.onSearchChange} />
                 <CardList titles={this.state.titles} />
             </div>

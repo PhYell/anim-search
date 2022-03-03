@@ -1,0 +1,8 @@
+.app-name {
+    color: #858585;
+    text-align: center;
+    padding-top: 2vh;
+}
+.app-name span {
+    color: black;
+}
