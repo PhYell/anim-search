@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ani-list/static/css/main.1111fd3f.css",
+    "main.js": "/ani-list/static/js/main.f7f688c1.js",
+    "static/js/787.3a5cb5b5.chunk.js": "/ani-list/static/js/787.3a5cb5b5.chunk.js",
+    "index.html": "/ani-list/index.html",
+    "main.1111fd3f.css.map": "/ani-list/static/css/main.1111fd3f.css.map",
+    "main.f7f688c1.js.map": "/ani-list/static/js/main.f7f688c1.js.map",
+    "787.3a5cb5b5.chunk.js.map": "/ani-list/static/js/787.3a5cb5b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1111fd3f.css",
+    "static/js/main.f7f688c1.js"
+  ]
+}
