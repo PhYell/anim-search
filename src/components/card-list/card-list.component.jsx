@@ -11,6 +11,7 @@ function CardList(props) {
                     title={title.attributes.canonicalTitle}
                     synopsis={title.attributes.synopsis}
                     rating={title.attributes.averageRating}
+                    image={title.attributes.posterImage.small}
                 />
             ))}
         </div>
