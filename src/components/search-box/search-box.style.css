@@ -4,7 +4,7 @@
     text-align: center;
     margin: 2vh auto 2vh;
     display: flex;
-    padding: 5px 2px;
+    padding: 5px 0;
     color: #858585;
 }
 .search-input:focus {
@@ -16,4 +16,11 @@
 }
 .search-input::placeholder {
     color: #cbd3d3;
+    text-align: center;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
 }

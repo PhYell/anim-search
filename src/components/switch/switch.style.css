@@ -48,7 +48,7 @@
 }
 
 input:checked + .slider {
-    background-color: #44e63a;
+    background-color: #47da3f;
 }
 
 input:checked + .slider:before {
@@ -57,5 +57,5 @@ input:checked + .slider:before {
     transform: translateX(30px);
 
     content: "manga";
-    color: #44e63a;
+    color: #47da3f;
 }

@@ -7,7 +7,7 @@ function SearchBox(props) {
             type="search"
             placeholder="search"
             onChange={props.onSearchChange}
-        ></input>
+        />
     );
 }
 

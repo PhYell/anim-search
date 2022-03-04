@@ -14,42 +14,41 @@ class App extends React.Component {
 
         this.state = {
             titles: [],
-            searchField: "",
+            titles2: [],
         };
     }
 
-    componentDidMount() {
+    fillStateTitles() {
         fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=0&filter[text]=` +
+            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&filter[text]=` +
                 searchValue
         )
             .then((response) => response.json())
             .then((data) => this.setState({ titles: data["data"] }));
+        fetch(
+            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&filter[text]=` +
+                searchValue
+        )
+            .then((response) => response.json())
+            .then((data) => this.setState({ titles2: data["data"] }));
+    }
+
+    componentDidMount() {
+        this.fillStateTitles();
     }
 
     onSearchChange = (event) => {
         console.log(event.target.value);
         searchValue = event.target.value;
 
-        fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=0&filter[text]=` +
-                searchValue
-        )
-            .then((response) => response.json())
-            .then((data) => this.setState({ titles: data["data"] }));
-        // this.setState({ searchField: event.target.value });
+        this.fillStateTitles();
     };
 
     changeType = (event) => {
         if (event.target.checked) type = "manga";
         else type = "anime";
 
-        fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=0&filter[text]=` +
-                searchValue
-        )
-            .then((response) => response.json())
-            .then((data) => this.setState({ titles: data["data"] }));
+        this.fillStateTitles();
     };
 
     render() {
@@ -61,6 +60,7 @@ class App extends React.Component {
                 <SearchBox onSearchChange={this.onSearchChange} />
                 <Switch changeType={this.changeType} />
                 <CardList titles={this.state.titles} />
+                <CardList titles={this.state.titles2} />
             </div>
         );
     }
