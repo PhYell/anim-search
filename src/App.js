@@ -24,28 +24,34 @@ class App extends React.Component {
         let search = `filter[text]=${searchValue}&sort=${sortBy}`;
         if (searchValue == "") search = `sort=popularityRank`; // -averageRating
 
-        fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
-        )
-            .then((response) => response.json())
-            .then((data) => this.setState({ titles: data["data"] }));
-        fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&${search}`
-        )
-            .then((response) => response.json())
-            .then((data) => this.setState({ titles2: data["data"] }));
-
-        // `https://kitsu.io/api/edge/anime?sort=popularityRank`;
         // fetch(
-        //     `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&sort=popularityRank&`
+        //     `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
         // )
         //     .then((response) => response.json())
         //     .then((data) => this.setState({ titles: data["data"] }));
         // fetch(
-        //     `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&sort=popularityRank`
+        //     `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&${search}`
         // )
         //     .then((response) => response.json())
         //     .then((data) => this.setState({ titles2: data["data"] }));
+
+        Promise.all([
+            fetch(
+                `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
+            ).then((resp) => resp.json()),
+            fetch(
+                `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&${search}`
+            ).then((resp) => resp.json()),
+            fetch(
+                `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${40}&${search}`
+            ).then((resp) => resp.json()),
+        ]).then((data) =>
+            this.setState({
+                titles: data[0]["data"]
+                    .concat(data[1]["data"])
+                    .concat(data[2]["data"]),
+            })
+        );
     }
 
     componentDidMount() {
@@ -73,6 +79,7 @@ class App extends React.Component {
     };
 
     render() {
+        // console.log(this.state.titles);
         return (
             <div className="App">
                 <h1 className="app-name">
@@ -81,7 +88,6 @@ class App extends React.Component {
                 <SearchBox onSearchChange={this.onSearchChange} />
                 <Switch changeType={this.changeType} />
                 <CardList titles={this.state.titles} />
-                <CardList titles={this.state.titles2} />
             </div>
         );
     }
