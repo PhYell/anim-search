@@ -7,6 +7,8 @@ import React from "react";
 
 let type = "anime";
 let searchValue = "";
+let category = "";
+let sortBy = "";
 
 class App extends React.Component {
     constructor() {
@@ -19,18 +21,31 @@ class App extends React.Component {
     }
 
     fillStateTitles() {
+        let search = `filter[text]=${searchValue}&sort=${sortBy}`;
+        if (searchValue == "") search = `sort=popularityRank`; // -averageRating
+
         fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&filter[text]=` +
-                searchValue
+            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
         )
             .then((response) => response.json())
             .then((data) => this.setState({ titles: data["data"] }));
         fetch(
-            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&filter[text]=` +
-                searchValue
+            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&${search}`
         )
             .then((response) => response.json())
             .then((data) => this.setState({ titles2: data["data"] }));
+
+        // `https://kitsu.io/api/edge/anime?sort=popularityRank`;
+        // fetch(
+        //     `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&sort=popularityRank&`
+        // )
+        //     .then((response) => response.json())
+        //     .then((data) => this.setState({ titles: data["data"] }));
+        // fetch(
+        //     `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&sort=popularityRank`
+        // )
+        //     .then((response) => response.json())
+        //     .then((data) => this.setState({ titles2: data["data"] }));
     }
 
     componentDidMount() {
@@ -47,6 +62,12 @@ class App extends React.Component {
     changeType = (event) => {
         if (event.target.checked) type = "manga";
         else type = "anime";
+
+        this.fillStateTitles();
+    };
+
+    onSelect = (event) => {
+        sortBy = event.target.options[event.target.selectedIndex].value;
 
         this.fillStateTitles();
     };
