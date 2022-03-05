@@ -2,7 +2,7 @@ import "./card-list.style.css";
 
 import Card from "../card/card.component";
 
-function CardList(props) {
+const CardList = (props) => {
     return (
         <div className="card-list">
             {props.titles.map((title) => (
@@ -16,6 +16,6 @@ function CardList(props) {
             ))}
         </div>
     );
-}
+};
 
 export default CardList;
