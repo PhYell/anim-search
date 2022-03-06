@@ -2,10 +2,11 @@ import "./card-list.style.css";
 
 import Card from "../card/card.component";
 
-const CardList = (props) => {
+const CardList = ({ titles }) => {
+    // console.log(titles);
     return (
         <div className="card-list">
-            {props.titles.map((title) => (
+            {titles.map((title) => (
                 <Card
                     key={title.id}
                     title={title.attributes.canonicalTitle}

@@ -5,17 +5,22 @@ import CardList from "../../components/card-list/card-list.component";
 import Switch from "../../components/switch/switch.component";
 
 const SearchPage = () => {
-    let type = "anime";
-    let searchValue = "";
-    let category = "";
-    let sortBy = "";
+    // let type = "anime";
+    // let searchValue = "";
+    // let category = "";
+    // let sortBy = "";
 
     const [titles, setTitles] = useState([]);
 
-    // const url = `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=0&sort=popularityRank`;
+    const [type, setType] = useState("anime");
+    const [searchValue, setSearchValue] = useState("");
+    const [category, setCategory] = useState("");
+    const [sortBy, setSortBy] = useState("");
 
     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-    if (searchValue == "") search = `sort=popularityRank`; // -averageRating
+
+    // let search = `filter[text]=${searchValue}&sort=${sortBy}`;
+    // if (searchValue == "") search = `sort=popularityRank`; // -averageRating
 
     // const fillStateTitles = () => {
     //     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
@@ -34,24 +39,45 @@ const SearchPage = () => {
     //     );
     // };
 
-    const fetchData = async () => {
-        let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-        if (searchValue == "") search = `sort=popularityRank`; // -averageRating
-        try {
-            const response = await fetch(
-                `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
-            );
-            const data = await response.json();
-            // console.log("data : ", data["data"]);
-            setTitles(data["data"]);
-        } catch (error) {
-            console.log("error", error);
-        }
-    };
+    // const fetchData = () => {
+    //     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
+    //     if (searchValue == "") search = `sort=popularityRank`; // -averageRating
+
+    //     fetch(
+    //         `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) =>
+    //             setTitles({
+    //                 titles: data["data"],
+    //             })
+    //         );
+    // };
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        console.log("chnage");
+        if (searchValue === "") search = `sort=popularityRank`; // -averageRating
+
+        const getTitles = async () => {
+            const titlesFromServer = await fetchData();
+            setTitles(titlesFromServer);
+        };
+
+        getTitles();
+    }, [type, searchValue, sortBy]);
+
+    // fetch tasks
+    const fetchData = async () => {
+        // let search = `filter[text]=${searchValue}&sort=${sortBy}`;
+        // if (searchValue === "") search = `sort=popularityRank`; // -averageRating
+
+        const response = await fetch(
+            `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
+        );
+        const data = await response.json();
+
+        return data["data"];
+    };
 
     // componentDidMount() {
     //     this.fillStateTitles();
@@ -59,22 +85,41 @@ const SearchPage = () => {
 
     const onSearchChange = (event) => {
         console.log(event.target.value);
-        searchValue = event.target.value;
+        setSearchValue(event.target.value);
 
-        fetchData();
+        // console.log(titles);
+
+        // const getTitles = async () => {
+        //     const titlesFromServer = await fetchData();
+        //     setTitles(titlesFromServer);
+        // };
+
+        // getTitles();
     };
 
     const changeType = (event) => {
-        if (event.target.checked) type = "manga";
-        else type = "anime";
+        if (event.target.checked) setType("manga");
+        else setType("anime");
 
-        fetchData();
+        console.log("changed type");
+
+        // const getTitles = async () => {
+        //     const titlesFromServer = await fetchData();
+        //     setTitles(titlesFromServer);
+        // };
+
+        // getTitles();
     };
 
     const onSelect = (event) => {
-        sortBy = event.target.options[event.target.selectedIndex].value;
+        setSortBy(event.target.options[event.target.selectedIndex].value);
 
-        fetchData();
+        // const getTitles = async () => {
+        //     const titlesFromServer = await fetchData();
+        //     setTitles(titlesFromServer);
+        // };
+
+        // getTitles();
     };
 
     return (
