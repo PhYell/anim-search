@@ -1,0 +1,36 @@
+.page-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.page-nav button {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 3rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+
+    transition: 0.3s ease-out;
+
+    background-color: transparent;
+    border: none;
+    user-select: none;
+    cursor: pointer;
+}
+.page-nav button:hover {
+    color: #353535;
+}
+.disabled-page-nav {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 3rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+    color: #858585;
+    user-select: none;
+}
+.current-page {
+    font-weight: bold;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+}

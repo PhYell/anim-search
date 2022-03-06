@@ -11,22 +11,6 @@ const DescriptionPage = () => {
 
     const { type, id } = useParams(); // or let
 
-    // useEffect(() => {
-    //     const getTitle = async () => {
-    //         const titleFromServer = await fetchData();
-    //         setTitle(titleFromServer);
-    //     };
-
-    //     getTitle();
-    // }, [type, id]);
-
-    // const fetchData = async () => {
-    //     const response = await fetch(`https://kitsu.io/api/edge/${type}/${id}`);
-    //     const data = await response.json();
-
-    //     return data["data"];
-    // };
-
     useEffect(() => {
         fetch(`https://kitsu.io/api/edge/${type}/${id}`)
             .then((response) => response.json())

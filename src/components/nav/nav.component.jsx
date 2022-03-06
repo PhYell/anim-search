@@ -8,7 +8,7 @@ const Nav = () => {
             <Link className="link" to={{ pathname: "/" }}>
                 Home
             </Link>
-            <Link className="link" to={{ pathname: "/search" }}>
+            <Link className="link" to={{ pathname: "/search/0" }}>
                 Search
             </Link>
             <Link className="link" to={{ pathname: "/about" }}>

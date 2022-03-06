@@ -23,7 +23,7 @@ const App = () => {
             <Nav />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/search" element={<SearchPage />} />
+                <Route path="/search/:page" element={<SearchPage />} />
                 <Route
                     path="/description/:type/:id"
                     element={<DescriptionPage />}
