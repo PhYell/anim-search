@@ -1,5 +1,11 @@
+import "./genre.style.css";
+
 const Genre = (props) => {
-    return <h3>{props.genre}</h3>;
+    return (
+        <a style={{ backgroundColor: {} }} className="genre">
+            {props.genre}
+        </a>
+    );
 };
 
 export default Genre;

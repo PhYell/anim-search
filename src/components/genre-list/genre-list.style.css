@@ -1,0 +1,7 @@
+.genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    gap: 0.5rem;
+    max-width: 320px;
+}

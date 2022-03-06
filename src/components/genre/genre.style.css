@@ -1,0 +1,9 @@
+.genre {
+    padding: 1px 6px;
+    background-color: #2196f3;
+    border-radius: 9px;
+    color: #edf0f0;
+    font-weight: bold;
+
+    user-select: none;
+}
