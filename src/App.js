@@ -1,6 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+import Nav from "./components/nav/nav.component";
+
 import "./App.css";
 
 // import CardList from "./components/card-list/card-list.component";
@@ -18,10 +20,12 @@ const App = () => {
             <h1 className="app-name">
                 Ani<span>List</span>
             </h1>
-            <nav></nav>
+            <Nav />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/search" element={<SearchPage />} />
+                <Route path="/about" element={<SearchPage />} />
+                {/* <Route path="*" element={<ErrorPage />} /> */}
             </Routes>
         </div>
     );
