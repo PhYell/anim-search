@@ -6,3 +6,6 @@
 .app-name span {
     color: black;
 }
+a {
+    text-decoration: none;
+}

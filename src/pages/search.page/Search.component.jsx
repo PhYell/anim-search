@@ -19,45 +19,7 @@ const SearchPage = () => {
 
     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
 
-    // let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-    // if (searchValue == "") search = `sort=popularityRank`; // -averageRating
-
-    // const fillStateTitles = () => {
-    //     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-    //     if (searchValue == "") search = `sort=popularityRank`; // -averageRating
-    //     Promise.all([
-    //         fetch(
-    //             `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
-    //         ).then((resp) => resp.json()),
-    //         fetch(
-    //             `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${20}&${search}`
-    //         ).then((resp) => resp.json()),
-    //     ]).then((data) =>
-    //         setTitles({
-    //             titles: data[0]["data"].concat(data[1]["data"]),
-    //         })
-    //     );
-    // };
-
-    // const fetchData = () => {
-    //     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-    //     if (searchValue == "") search = `sort=popularityRank`; // -averageRating
-
-    //     fetch(
-    //         `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) =>
-    //             setTitles({
-    //                 titles: data["data"],
-    //             })
-    //         );
-    // };
-
     useEffect(() => {
-        console.log("chnage");
-        if (searchValue === "") search = `sort=popularityRank`; // -averageRating
-
         const getTitles = async () => {
             const titlesFromServer = await fetchData();
             setTitles(titlesFromServer);
@@ -68,9 +30,7 @@ const SearchPage = () => {
 
     // fetch tasks
     const fetchData = async () => {
-        // let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-        // if (searchValue === "") search = `sort=popularityRank`; // -averageRating
-
+        if (searchValue === "") search = `sort=popularityRank`; // -averageRating
         const response = await fetch(
             `https://kitsu.io/api/edge/${type}?page[limit]=20&page[offset]=${0}&${search}`
         );
@@ -79,49 +39,20 @@ const SearchPage = () => {
         return data["data"];
     };
 
-    // componentDidMount() {
-    //     this.fillStateTitles();
-    // }
-
     const onSearchChange = (event) => {
-        console.log(event.target.value);
         setSearchValue(event.target.value);
-
-        // console.log(titles);
-
-        // const getTitles = async () => {
-        //     const titlesFromServer = await fetchData();
-        //     setTitles(titlesFromServer);
-        // };
-
-        // getTitles();
     };
 
     const changeType = (event) => {
         if (event.target.checked) setType("manga");
         else setType("anime");
-
-        console.log("changed type");
-
-        // const getTitles = async () => {
-        //     const titlesFromServer = await fetchData();
-        //     setTitles(titlesFromServer);
-        // };
-
-        // getTitles();
     };
 
     const onSelect = (event) => {
         setSortBy(event.target.options[event.target.selectedIndex].value);
-
-        // const getTitles = async () => {
-        //     const titlesFromServer = await fetchData();
-        //     setTitles(titlesFromServer);
-        // };
-
-        // getTitles();
     };
 
+    console.log(titles);
     return (
         <div>
             <SearchBox onSearchChange={onSearchChange} />

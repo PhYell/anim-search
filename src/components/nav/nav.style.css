@@ -2,6 +2,7 @@ nav {
     display: flex;
     justify-content: center;
     gap: 4vw;
+    margin: 1vh 0;
 }
 .link {
     text-decoration: none;
