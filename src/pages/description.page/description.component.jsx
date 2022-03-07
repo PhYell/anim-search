@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import Card from "../../components/card/card.component";
 import CardList from "../../components/card-list/card-list.component";
+import CharacterList from "../../components/character-list/character-list.component";
 
 const DescriptionPage = () => {
     const [title, setTitle] = useState(null);
@@ -31,6 +32,7 @@ const DescriptionPage = () => {
                 <div>{`There is a problem fetching the post data - ${error}`}</div>
             )}
             {title && <CardList titles={[title]} />}
+            <CharacterList type={type} id={id} />
         </main>
     );
 };

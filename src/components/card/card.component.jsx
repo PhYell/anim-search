@@ -25,10 +25,10 @@ const Card = (props) => {
 
     return (
         <div className="card">
-            <Link to={`/description/${props.type}/${props.id}`}>
+            <Link to={`/ani-list/description/${props.type}/${props.id}`}>
                 <h2 className="title">{props.title}</h2>
             </Link>
-            <Link to={`/description/${props.type}/${props.id}`}>
+            <Link to={`/ani-list/description/${props.type}/${props.id}`}>
                 <img src={props.image} alt="anime cover" />
             </Link>
 

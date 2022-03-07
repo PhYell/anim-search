@@ -22,14 +22,14 @@ const App = () => {
             </h1>
             <Nav />
             <Routes>
-                {/* <Route path="/" element={<HomePage />} /> */}
+                <Route path="/" element={<HomePage />} />
                 <Route path="/ani-list" element={<HomePage />} />
                 <Route path="/ani-list/search/:page" element={<SearchPage />} />
                 <Route
                     path="/ani-list/description/:type/:id"
                     element={<DescriptionPage />}
                 />
-                <Route path="/about" element={<SearchPage />} />
+                <Route path="/ani-list/about" element={<SearchPage />} />
                 {/* <Route path="*" element={<ErrorPage />} /> */}
             </Routes>
         </div>
