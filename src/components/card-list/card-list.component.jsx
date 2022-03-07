@@ -3,7 +3,6 @@ import "./card-list.style.css";
 import Card from "../card/card.component";
 
 const CardList = ({ titles }) => {
-    // console.log(titles);
     return (
         <div className="card-list">
             {titles.map((title) => (

@@ -1,7 +1,6 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Card from "../../components/card/card.component";
 import CardList from "../../components/card-list/card-list.component";
 import CharacterList from "../../components/character-list/character-list.component";
 
@@ -10,9 +9,13 @@ const DescriptionPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const { type, id } = useParams(); // or let
+    const { type, id } = useParams();
 
     useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = () => {
         fetch(`https://kitsu.io/api/edge/${type}/${id}`)
             .then((response) => response.json())
             .then((data) => setTitle(data["data"]))
@@ -23,7 +26,7 @@ const DescriptionPage = () => {
             .finally(() => {
                 setLoading(false);
             });
-    }, [type, id]);
+    };
 
     return (
         <main className="description-page">

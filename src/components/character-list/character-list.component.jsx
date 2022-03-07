@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import "./character-list.style.css";
+
 import Character from "../character/character.component";
 
 const CharacterList = ({ type, id }) => {
@@ -9,9 +11,8 @@ const CharacterList = ({ type, id }) => {
 
     const charactersArray = [];
 
-    const url = `https://kitsu.io/api/edge/${type}/${id}/characters`;
-
-    const url2 = `https://kitsu.io/api/edge/media-characters/7509/media"`;
+    const url = `https://kitsu.io/api/edge/${type}/${id}/characters?page[limit]=20&page[offset]=0`;
+    //https://kitsu.io/api/edge/anime/7442/characters?filter[role]=main
 
     useEffect(() => {
         fetch(url)
@@ -24,52 +25,22 @@ const CharacterList = ({ type, id }) => {
             .finally(() => {
                 setLoading(false);
             });
-    }, [type, id]);
-
-    console.log(
-        "characters",
-        typeof characters,
-        characters
-        // characters[1]["id"]
-    );
-
-    // {
-    //     Object.keys(characters).map((character) => {
-    //         console.log(character);
-    //     });
-    // }
-
-    // characters.map((char) => {
-    //     console.log(char);
-    // });
-
-    // for (let i in characters) {
-    //     charactersArray.push(characters[i]);
-    // }
-
-    // console.log(charactersArray, typeof charactersArray);
+    }, []); //type, id
 
     return (
-        <div>
-            <h3>character list</h3>
+        <div className="character-list">
             {loading && <div>A moment please...</div>}
             {error && (
                 <div>{`There is a problem fetching the post data - ${error}`}</div>
             )}
-            {/* {characters &&
-                characters.map((character) => {
-                    <Character key={character.id} id={character.id} />;
-                })} */}
-            {characters.map((character) => (
-                <Character key={character.id} id={character.id} />
-            ))}
-            {/* {characters.map((character) => (
-                <Genre key={genre.id} genre={genre.attributes.name} />
-            ))} */}
-            {/* {characters.map((character) => {
-                <Character character={character} />;
-            })} */}
-            {/* <Character character={characters[1]} /> */}
+            {characters &&
+                characters.map((character) => (
+                    <Character
+                        key={character.id}
+                        id={character.id}
+                        role={character.attributes.role}
+                    />
+                ))}
         </div>
     );
 };
