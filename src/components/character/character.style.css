@@ -1,14 +1,18 @@
 .character {
     background-color: #edf0f0;
     padding: 0.5rem;
+    box-shadow: 0 0 5px rgba(138, 138, 138, 0.637);
 }
 .character-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     background-position: center;
     background-size: cover;
     margin: auto;
 }
-.character p {
+.character-name {
+    max-width: 120px;
+    height: 2rem;
+    line-height: 0.9rem;
 }

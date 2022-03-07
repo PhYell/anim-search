@@ -1,7 +1,10 @@
 .character-list {
-    width: 80%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.15rem;
+    max-width: 600px;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
 }

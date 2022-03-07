@@ -23,8 +23,16 @@ const Character = ({ id, role }) => {
     }, []);
     // console.log(character.image);
     return (
-        <div className="character">
-            <p>{character.canonicalName}</p>
+        <div
+            className="character"
+            onMouseEnter={() => {
+                console.log("mouse entered", id);
+            }}
+            onMouseLeave={() => {
+                console.log("mouse left :(");
+            }}
+        >
+            <p className="character-name">{character.canonicalName}</p>
             {character.image && (
                 <div
                     className="character-image"
