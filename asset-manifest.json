@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ani-list/static/css/main.acef1448.css",
-    "main.js": "/ani-list/static/js/main.bae28916.js",
+    "main.js": "/ani-list/static/js/main.807d9a03.js",
     "index.html": "/ani-list/index.html",
     "main.acef1448.css.map": "/ani-list/static/css/main.acef1448.css.map",
-    "main.bae28916.js.map": "/ani-list/static/js/main.bae28916.js.map"
+    "main.807d9a03.js.map": "/ani-list/static/js/main.807d9a03.js.map"
   },
   "entrypoints": [
     "static/css/main.acef1448.css",
-    "static/js/main.bae28916.js"
+    "static/js/main.807d9a03.js"
   ]
 }
