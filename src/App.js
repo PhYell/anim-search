@@ -22,10 +22,11 @@ const App = () => {
             </h1>
             <Nav />
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/search/:page" element={<SearchPage />} />
+                {/* <Route path="/" element={<HomePage />} /> */}
+                <Route path="/ani-list" element={<HomePage />} />
+                <Route path="/ani-list/search/:page" element={<SearchPage />} />
                 <Route
-                    path="/description/:type/:id"
+                    path="/ani-list/description/:type/:id"
                     element={<DescriptionPage />}
                 />
                 <Route path="/about" element={<SearchPage />} />
