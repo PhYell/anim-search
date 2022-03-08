@@ -18,16 +18,25 @@ const SearchPage = () => {
     const [category, setCategory] = useState("");
     const [sortBy, setSortBy] = useState("");
 
+    const [selectedGenres, setSelectedGenres] = useState([]);
+
     let { page } = useParams();
 
     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
 
     useEffect(() => {
+        let searchCategories = "";
+        if (selectedGenres.length > 0) {
+            searchCategories = `filter[categories]=${selectedGenres}`;
+        }
+        console.log(searchCategories);
+
         if (searchValue === "") search = `sort=popularityRank`; // -averageRating
         fetch(
             `https://kitsu.io/api/edge/${type}?page[limit]=10&page[offset]=${
                 page * 10
-            }&${search}&fields[anime]=id,synopsis,canonicalTitle,posterImage,averageRating,genres`
+            }&${search}&fields[anime]=id,synopsis,canonicalTitle,posterImage,averageRating,genres&${searchCategories}
+            }`
         )
             .then((response) => response.json())
             .then((data) => setTitles(data["data"]))
@@ -38,7 +47,7 @@ const SearchPage = () => {
             .finally(() => {
                 setLoading(false);
             });
-    }, [type, searchValue, sortBy, page]);
+    }, [type, searchValue, sortBy, page, selectedGenres]);
 
     const onSearchChange = (event) => {
         setSearchValue(event.target.value);
@@ -51,7 +60,30 @@ const SearchPage = () => {
     };
 
     const onSelect = (event) => {
-        setSortBy(event.target.options[event.target.selectedIndex].value);
+        const ar = selectedGenres;
+        if (selectedGenres.includes(event.target.parentNode.textContent)) {
+            const index = selectedGenres.indexOf(
+                event.target.parentNode.textContent
+            );
+            if (index > -1) {
+                ar.splice(index, 1);
+            }
+            setSelectedGenres([...ar]);
+        } else {
+            setSelectedGenres([
+                ...selectedGenres,
+                event.target.parentNode.textContent,
+            ]);
+        }
+
+        // setSelectedGenres(event.target.parentNode.textContent);
+        // if (selectedGenres.includes(event.target.parentNode.textContent)) {
+        //     setSelectedGenres([
+        //         ...selectedGenres,
+        //         event.target.parentNode.textContent,
+        //     ]);
+        // }
+        // console.log();
     };
 
     // console.log(titles);
@@ -59,7 +91,7 @@ const SearchPage = () => {
         <div>
             <SearchBox onSearchChange={onSearchChange} />
             <Switch changeType={changeType} />
-            <SelectGenres />
+            <SelectGenres onSelect={onSelect} />
             <PageNav />
             {loading && <div>A moment please...</div>}
             {error && (
