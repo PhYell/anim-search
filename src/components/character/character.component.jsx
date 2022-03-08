@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 
 import "./character.style.css";
 
+import CharacterDescription from "../character-description/character-description.component";
+
 const Character = ({ id, role }) => {
     const [character, setCharacter] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [isShown, setIsShown] = useState(false);
 
     const url = `https://kitsu.io/api/edge/media-characters/${id}/character`;
 
@@ -26,10 +29,12 @@ const Character = ({ id, role }) => {
         <div
             className="character"
             onMouseEnter={() => {
-                console.log("mouse entered", id);
+                setIsShown(true);
+                // <CharacterDescription description={character.description} />;
             }}
             onMouseLeave={() => {
-                console.log("mouse left :(");
+                setIsShown(false);
+                // console.log("mouse left :(");
             }}
         >
             <p className="character-name">{character.canonicalName}</p>
@@ -40,6 +45,9 @@ const Character = ({ id, role }) => {
                         backgroundImage: `url(${character.image.original})`,
                     }}
                 />
+            )}
+            {isShown && (
+                <CharacterDescription description={character.description} />
             )}
         </div>
     );
