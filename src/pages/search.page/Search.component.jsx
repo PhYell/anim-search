@@ -5,6 +5,7 @@ import SearchBox from "../../components/search-box/search-box.component";
 import CardList from "../../components/card-list/card-list.component";
 import Switch from "../../components/switch/switch.component";
 import PageNav from "../../components/page-nav/page-nav.component";
+import SelectGenres from "../../components/select-genres/select-genres.component";
 
 const SearchPage = () => {
     const [titles, setTitles] = useState([]);
@@ -20,28 +21,6 @@ const SearchPage = () => {
     let { page } = useParams();
 
     let search = `filter[text]=${searchValue}&sort=${sortBy}`;
-
-    // useEffect(() => {
-    //     const getTitles = async () => {
-    //         const titlesFromServer = await fetchData();
-    //         setTitles(titlesFromServer);
-    //     };
-
-    //     getTitles();
-    // }, [type, searchValue, sortBy, page]);
-
-    // // fetch tasks
-    // const fetchData = async () => {
-    //     if (searchValue === "") search = `sort=popularityRank`; // -averageRating
-    //     const response = await fetch(
-    //         `https://kitsu.io/api/edge/${type}?page[limit]=10&page[offset]=${
-    //             page * 10
-    //         }&${search}`
-    //     );
-    //     const data = await response.json();
-
-    //     return data["data"];
-    // };
 
     useEffect(() => {
         if (searchValue === "") search = `sort=popularityRank`; // -averageRating
@@ -63,6 +42,7 @@ const SearchPage = () => {
 
     const onSearchChange = (event) => {
         setSearchValue(event.target.value);
+        console.log(event.target.value);
     };
 
     const changeType = (event) => {
@@ -79,6 +59,7 @@ const SearchPage = () => {
         <div>
             <SearchBox onSearchChange={onSearchChange} />
             <Switch changeType={changeType} />
+            <SelectGenres />
             <PageNav />
             {loading && <div>A moment please...</div>}
             {error && (

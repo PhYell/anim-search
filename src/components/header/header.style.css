@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 2vh;
+}
+.app-name {
+    color: #858585;
+    text-align: center;
+    text-shadow: 0 0 1px rgba(114, 114, 114, 0.637);
+    font-size: 2rem;
+    line-height: 4rem;
+}
+.app-name span {
+    color: black;
+}
+
+@media screen and (max-width: 400px) {
+    .header {
+        flex-direction: column;
+    }
+}

@@ -4,7 +4,7 @@
     box-shadow: 0 0 5px rgba(138, 138, 138, 0.637);
 }
 .character:hover .character-image {
-    opacity: 0.9;
+    filter: contrast(110%);
 }
 .character-image {
     width: 120px;
@@ -13,9 +13,12 @@
     background-position: center;
     background-size: cover;
     margin: auto;
-    transition: 0.3s ease-out;
+    /* transition: 0.1s ease-in; */
+    border: 1px solid rgb(41, 41, 41);
 }
 .character-name {
+    z-index: 1;
+    text-shadow: 0 0 5px rgba(228, 228, 228, 0.637);
     max-width: 120px;
     height: 2rem;
     line-height: 0.9rem;

@@ -11,16 +11,14 @@ import Nav from "./components/nav/nav.component";
 import SearchPage from "./pages/search.page/Search.component";
 import DescriptionPage from "./pages/description.page/description.component";
 import HomePage from "./pages/home.page/home.component";
+import Header from "./components/header/header.component";
 
 import React from "react";
 
 const App = () => {
     return (
         <div>
-            <h1 className="app-name">
-                Ani<span>List</span>
-            </h1>
-            <Nav />
+            <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/ani-list" element={<HomePage />} />

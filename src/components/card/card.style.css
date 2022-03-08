@@ -28,6 +28,7 @@
 .card img {
     max-width: 100%;
     transition: 0.4s ease-out;
+    border: 1px solid rgb(41, 41, 41);
 }
 .card img:hover {
     opacity: 0.9;

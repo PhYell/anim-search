@@ -6,7 +6,11 @@ const GenreList = (props) => {
     return (
         <div className="genre-list">
             {props.genres.map((genre) => (
-                <Genre key={genre.id} genre={genre.attributes.name} />
+                <Genre
+                    key={genre.id}
+                    genre={genre.attributes.name}
+                    turned={true}
+                />
             ))}
         </div>
     );

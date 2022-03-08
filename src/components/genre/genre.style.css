@@ -1,9 +1,29 @@
-.genre {
+.select-genre {
     padding: 1px 6px;
-    background-color: #2196f3;
+    background-color: #edf0f0;
+    color: rgb(65, 65, 65);
     border-radius: 9px;
-    color: #edf0f0;
     font-weight: bold;
 
     user-select: none;
+}
+.unselectable-genre {
+    padding: 1px 6px;
+    background-color: #2196f3;
+    color: #edf0f0;
+    border-radius: 9px;
+    font-weight: bold;
+
+    user-select: none;
+}
+.turned-on {
+    background-color: #2196f3;
+    color: #edf0f0;
+}
+.genre-checkbox {
+    display: none;
+}
+.genre-checkbox:checked + .select-genre {
+    background-color: #2196f3 !important;
+    color: #edf0f0 !important;
 }
