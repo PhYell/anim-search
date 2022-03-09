@@ -1,9 +1,17 @@
+.select-genres-container {
+    text-align: center;
+}
 .select-genres {
     display: flex;
     flex-wrap: wrap;
     max-width: 600px;
     margin: auto;
     gap: 0.5rem;
+    animation-name: zoomIn;
+    animation-duration: 0.4s;
+    left: 0;
+    padding: 0.5rem;
+    justify-content: space-around;
 }
 .select-genre {
     background-color: #edf0f0;
@@ -19,4 +27,37 @@
 .selected-genre {
     background-color: #2196f3;
     color: #edf0f0;
+}
+.show-genres-button {
+    border: none;
+    font-weight: bold;
+    padding: 0 0.6rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2vh;
+
+    color: rgb(65, 65, 65);
+    transition: 0.5s ease-out;
+}
+.show-genres-button:hover,
+.show-genres-button:active {
+    padding: 0 0.9rem;
+    background-color: rgb(65, 65, 65);
+    color: #edf0f0;
+    letter-spacing: 0.03rem;
+}
+
+@keyframes zoomIn {
+    from {
+        position: relative;
+        left: -40%;
+        opacity: 0;
+        /* transform: scale(0); */
+    }
+    to {
+        position: relative;
+        left: 0;
+        opacity: 1;
+        /* transform: scale(1); */
+    }
 }

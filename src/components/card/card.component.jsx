@@ -9,7 +9,7 @@ const Card = (props) => {
     const [genres, setGenres] = useState();
     const [loading, setLoading] = useState(true);
 
-    const url = `https://kitsu.io/api/edge/${props.type}/${props.id}/genres`;
+    const url = `https://kitsu.io/api/edge/${props.type}/${props.id}/categories`;
 
     useEffect(() => {
         fetch(url)

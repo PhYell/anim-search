@@ -8,7 +8,7 @@ const GenreList = (props) => {
             {props.genres.map((genre) => (
                 <Genre
                     key={genre.id}
-                    genre={genre.attributes.name}
+                    genre={genre.attributes.title}
                     turned={true}
                 />
             ))}
