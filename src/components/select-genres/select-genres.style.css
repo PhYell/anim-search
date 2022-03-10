@@ -5,7 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto 2.5vh;
     gap: 0.5rem;
     animation-name: zoomIn;
     animation-duration: 0.4s;

@@ -93,6 +93,7 @@ const SearchPage = () => {
     };
 
     // console.log(titles);
+    console.log(titles);
     return (
         <div>
             <SearchBox onSearchChange={onSearchChange} />
@@ -104,6 +105,9 @@ const SearchPage = () => {
                 <div>{`There is a problem fetching the post data - ${error}`}</div>
             )}
             {titles && <CardList titles={titles} />}
+            {titles.length === 0 && (
+                <div className="nothing-was-found-spacing"></div>
+            )}
             <PageNav />
         </div>
     );
