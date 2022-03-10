@@ -1,7 +1,6 @@
 import "./genre.style.css";
 
 const Genre = ({ genre, turned, count, onSelect }) => {
-    console.log(count);
     return (
         <label style={{ backgroundColor: {} }}>
             <input
@@ -10,7 +9,7 @@ const Genre = ({ genre, turned, count, onSelect }) => {
                 className="genre-checkbox"
             />
             <span className={turned ? "unselectable-genre" : "select-genre"}>
-                {genre}
+                <span className="genre-text">{genre}</span>
                 <span className="genre-count">{turned ? "" : count}</span>
             </span>
         </label>

@@ -9,10 +9,8 @@
 }
 .select-genre:hover,
 .select-genre:active {
-    padding: 0 0.42rem;
     background-color: rgb(65, 65, 65);
     color: #edf0f0;
-    letter-spacing: 0.01rem;
 }
 .unselectable-genre {
     padding: 0 0.4rem;

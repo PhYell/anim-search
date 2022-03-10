@@ -35,7 +35,7 @@ const SearchPage = () => {
         fetch(
             `https://kitsu.io/api/edge/${type}?page[limit]=10&page[offset]=${
                 page * 10
-            }&${search}&fields[anime]=id,synopsis,canonicalTitle,posterImage,averageRating,genres&${searchCategories}
+            }&${search}&fields[anime]=id,synopsis,canonicalTitle,posterImage,averageRating,genres,categories&${searchCategories}
             }`
         )
             .then((response) => response.json())
@@ -61,9 +61,14 @@ const SearchPage = () => {
 
     const onSelect = (event) => {
         const ar = selectedGenres;
-        if (selectedGenres.includes(event.target.parentNode.textContent)) {
+        console.log(event.target.parentNode.querySelector(".genre-text"));
+        if (
+            selectedGenres.includes(
+                event.target.parentNode.querySelector(".genre-text").textContent
+            )
+        ) {
             const index = selectedGenres.indexOf(
-                event.target.parentNode.textContent
+                event.target.parentNode.querySelector(".genre-text").textContent
             );
             if (index > -1) {
                 ar.splice(index, 1);
@@ -72,7 +77,8 @@ const SearchPage = () => {
         } else {
             setSelectedGenres([
                 ...selectedGenres,
-                event.target.parentNode.textContent,
+                event.target.parentNode.querySelector(".genre-text")
+                    .textContent,
             ]);
         }
 
