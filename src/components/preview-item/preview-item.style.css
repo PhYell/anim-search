@@ -10,6 +10,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     overflow: hidden;
+    text-align: center;
 }
 .preview-item-image:hover,
 .preview-item-image:active {
@@ -26,12 +27,13 @@
     font-weight: bold;
     font-size: 0.8rem;
     -webkit-text-stroke: 0.5px rgb(255, 255, 255);
-    display: none;
+    /* display: none; */
 
     animation: slideFromTop 0.5s;
     /* animation-delay: 1s; */
     background-color: rgba(41, 41, 41, 0.3);
     user-select: none;
+    display: none;
 }
 
 @keyframes slideFromTop {

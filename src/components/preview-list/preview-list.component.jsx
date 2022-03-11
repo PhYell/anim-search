@@ -22,7 +22,7 @@ const PreviewList = ({ titles, season, year }) => {
                         image={title.attributes.posterImage.small}
                     />
                 ))}
-                <div className={`line ${season}`}></div>
+                <div className={`line ${season} divider-line`}></div>
             </div>
         </div>
     );

@@ -36,6 +36,10 @@
     opacity: 0.7;
     z-index: -1;
 }
+.divider-line {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
 
 .preview-list {
     text-align: center;

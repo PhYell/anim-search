@@ -12,7 +12,7 @@ const SelectGenres = ({ onSelect }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    const [isHidden, setIsHidden] = useState(true);
+    const [isHidden, setIsHidden] = useState(false);
 
     useEffect(() => {
         fetch(
