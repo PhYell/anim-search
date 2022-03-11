@@ -5,17 +5,25 @@ import PreviewItem from "../preview-item/preview-item.component";
 const PreviewList = ({ titles, season, year }) => {
     return (
         <div className="preview-list">
-            <h2>
-                <span className={season}>{season}</span> season{" "}
+            <h2 className="preview-list-title">
+                <div className={`line ${season}`}></div>
+                <span className={season}>{season}</span>{" "}
+                <p className="season-text">season </p>
                 <span className={season}>{year}</span>
+                <div className={`line ${season}`}></div>
             </h2>
-            {titles.map((title) => (
-                <PreviewItem
-                    key={title.id}
-                    name={title.attributes.canonicalTitle}
-                    image={title.attributes.posterImage}
-                />
-            ))}
+            <div className="preview-list-items">
+                {titles.map((title) => (
+                    <PreviewItem
+                        key={title.id}
+                        id={title.id}
+                        type={title.type}
+                        name={title.attributes.canonicalTitle}
+                        image={title.attributes.posterImage.small}
+                    />
+                ))}
+                <div className={`line ${season}`}></div>
+            </div>
         </div>
     );
 };

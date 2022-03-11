@@ -37,7 +37,7 @@ const HomePage = () => {
 
     useEffect(() => {
         fetch(
-            `https://kitsu.io/api/edge/anime?page[limit]=9&
+            `https://kitsu.io/api/edge/anime?page[limit]=20&
             page[offset]=0&filter[season]=${season}&filter[seasonYear]=${year}&sort=popularityRank`
         )
             .then((response) => response.json())

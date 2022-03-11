@@ -32,7 +32,12 @@ const Card = (props) => {
                 <img src={props.image} alt="anime cover" />
             </Link>
 
-            <p className="rating">{Math.round(props.rating) / 10} / 10</p>
+            <p className="rating">
+                {Math.round(props.rating) / 10 === 0
+                    ? "NA"
+                    : Math.round(props.rating) / 10}{" "}
+                / 10
+            </p>
             {genres && <GenreList genres={genres} />}
             <p className="description">{props.synopsis}</p>
         </div>

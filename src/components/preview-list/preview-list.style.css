@@ -10,3 +10,49 @@
 .autumn {
     color: #a03c04;
 }
+
+.line.winter {
+    background-color: #085c74;
+}
+.line.spring {
+    background-color: #ffb414;
+}
+.line.summer {
+    background-color: #288cac;
+}
+.line.autumn {
+    background-color: #a03c04;
+}
+
+.season-text {
+    color: rgb(66, 66, 66);
+}
+
+.line {
+    height: 0.2rem;
+    background-color: #edf0f0;
+    width: 100%;
+    margin-top: 18px;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.preview-list {
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+}
+.preview-list-title {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+}
+
+.preview-list-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1vh;
+}

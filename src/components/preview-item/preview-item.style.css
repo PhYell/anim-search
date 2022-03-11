@@ -1,0 +1,44 @@
+.preview-item {
+    height: 200px;
+}
+.preview-item-image {
+    transition: 0.1s ease-in;
+    height: 200px;
+    width: 142px;
+    border: 1px solid rgb(41, 41, 41);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.preview-item-image:hover,
+.preview-item-image:active {
+    position: relative;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px black;
+}
+.preview-item-image:hover > .preview-item-title {
+    display: block;
+}
+
+.preview-item-title {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8rem;
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+    display: none;
+
+    animation: slideFromTop 0.5s;
+    /* animation-delay: 1s; */
+    background-color: rgba(41, 41, 41, 0.3);
+    user-select: none;
+}
+
+@keyframes slideFromTop {
+    from {
+        margin-top: -100%;
+    }
+    to {
+        margin-top: 0;
+    }
+}

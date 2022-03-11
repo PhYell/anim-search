@@ -2,7 +2,7 @@ import "./card-list.style.css";
 
 import Card from "../card/card.component";
 
-const CardList = ({ titles, isHomepage }) => {
+const CardList = ({ titles }) => {
     return (
         <div className="card-list">
             {titles.map((title) => (
@@ -14,7 +14,6 @@ const CardList = ({ titles, isHomepage }) => {
                     synopsis={title.attributes.synopsis}
                     rating={title.attributes.averageRating}
                     image={title.attributes.posterImage.small}
-                    isHomepage={isHomepage}
                 />
             ))}
         </div>
