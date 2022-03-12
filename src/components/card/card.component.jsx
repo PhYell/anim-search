@@ -6,22 +6,22 @@ import "./card.style.css";
 import GenreList from "../genre-list/genre-list.component";
 
 const Card = (props) => {
-    const [genres, setGenres] = useState();
-    const [loading, setLoading] = useState(true);
+    // const [genres, setGenres] = useState();
+    // const [loading, setLoading] = useState(true);
 
-    const url = `https://kitsu.io/api/edge/${props.type}/${props.id}/categories`;
+    // const url = `https://kitsu.io/api/edge/${props.type}/${props.id}/categories`;
 
-    useEffect(() => {
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => setGenres(data["data"]))
-            .catch((err) => {
-                setGenres(null);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
+    // useEffect(() => {
+    //     fetch(url)
+    //         .then((response) => response.json())
+    //         .then((data) => setGenres(data["data"]))
+    //         .catch((err) => {
+    //             setGenres(null);
+    //         })
+    //         .finally(() => {
+    //             setLoading(false);
+    //         });
+    // }, []);
 
     return (
         <div className="card">
@@ -38,7 +38,7 @@ const Card = (props) => {
                     : Math.round(props.rating) / 10}{" "}
                 / 10
             </p>
-            {genres && <GenreList genres={genres} />}
+            <GenreList genres={props.genres} />
             <p className="description">{props.synopsis}</p>
         </div>
     );

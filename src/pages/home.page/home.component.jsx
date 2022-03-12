@@ -12,24 +12,26 @@ previousDate.setMonth(previousDate.getMonth() - 3);
 let prevYear = previousDate.getFullYear();
 let prevMonth = previousDate.getMonth();
 
+const seasons = ["winter", "spring", "summer", "fall"];
+
 function giveSeason(month) {
     switch (month) {
         case 11:
         case 0:
         case 1:
-            return "winter";
+            return 0;
         case 2:
         case 3:
         case 4:
-            return "spring";
+            return 1;
         case 5:
         case 6:
         case 7:
-            return "summer";
+            return 2;
         case 8:
         case 9:
         case 10:
-            return "fall";
+            return 3;
     }
 }
 
@@ -42,17 +44,60 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    console.log("previous date", previousDate);
+    // useEffect(() => {
+    //     fetch(
+    //         `https://kitsu.io/api/edge/anime?page[limit]=20&
+    //         page[offset]=0&filter[season]=${giveSeason(
+    //             month
+    //         )}&filter[seasonYear]=${year}&sort=popularityRank`
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => setTitles(data["data"]))
+    //         .catch((err) => {
+    //             setError(err.message);
+    //             setTitles(null);
+    //         })
+    //         .finally(() => {
+    //             setLoading(false);
+    //         });
+
+    //     fetch(
+    //         `https://kitsu.io/api/edge/anime?page[limit]=8&
+    //             page[offset]=0&filter[season]=${giveSeason(
+    //                 prevMonth
+    //             )}&filter[seasonYear]=${prevYear}&sort=popularityRank`
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => setTitlesFromPreviousSeason(data["data"]))
+    //         .catch((err) => {
+    //             setError(err.message);
+    //             setTitlesFromPreviousSeason(null);
+    //         })
+    //         .finally(() => {
+    //             setLoading(false);
+    //         });
+    // }, []);
+
+    //weekly_airing_day
 
     useEffect(() => {
         fetch(
-            `https://kitsu.io/api/edge/anime?page[limit]=20&
-            page[offset]=0&filter[season]=${giveSeason(
+            `https://api.aniapi.com/v1/anime?season=${giveSeason(
                 month
-            )}&filter[seasonYear]=${year}&sort=popularityRank`
+            )}&year=${year}`,
+            {
+                //status=1 for ongoings
+                method: "GET",
+                headers: {
+                    Authorization:
+                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzODYiLCJuYmYiOjE2NDcwMjM5MzcsImV4cCI6MTY0OTYxNTkzNywiaWF0IjoxNjQ3MDIzOTM3fQ.ASKDWEhjwrxamRTT4MwHO0Dadr20lfn48QJuMg5p548",
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+            }
         )
             .then((response) => response.json())
-            .then((data) => setTitles(data["data"]))
+            .then((data) => setTitles(data.data.documents))
             .catch((err) => {
                 setError(err.message);
                 setTitles(null);
@@ -62,13 +107,21 @@ const HomePage = () => {
             });
 
         fetch(
-            `https://kitsu.io/api/edge/anime?page[limit]=8&
-                page[offset]=0&filter[season]=${giveSeason(
-                    prevMonth
-                )}&filter[seasonYear]=${prevYear}&sort=popularityRank`
+            `https://api.aniapi.com/v1/anime?season=${giveSeason(
+                prevMonth
+            )}&year=${prevYear}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization:
+                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzODYiLCJuYmYiOjE2NDcwMjM5MzcsImV4cCI6MTY0OTYxNTkzNywiaWF0IjoxNjQ3MDIzOTM3fQ.ASKDWEhjwrxamRTT4MwHO0Dadr20lfn48QJuMg5p548",
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+            }
         )
             .then((response) => response.json())
-            .then((data) => setTitlesFromPreviousSeason(data["data"]))
+            .then((data) => setTitlesFromPreviousSeason(data.data.documents))
             .catch((err) => {
                 setError(err.message);
                 setTitlesFromPreviousSeason(null);
@@ -78,16 +131,17 @@ const HomePage = () => {
             });
     }, []);
 
+    console.log(titles);
     return (
         <div className="home-page">
             <PreviewList
                 titles={titles}
-                season={giveSeason(month)}
+                season={seasons[giveSeason(month)]}
                 year={year}
             />
             <PreviewList
                 titles={titlesFromPreviousSeason}
-                season={giveSeason(prevMonth)}
+                season={seasons[giveSeason(prevMonth)]}
                 year={year}
             />
         </div>

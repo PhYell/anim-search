@@ -14,12 +14,35 @@ const SelectGenres = ({ onSelect }) => {
 
     const [isHidden, setIsHidden] = useState(false);
 
+    //https://api.aniapi.com/v1/resources/1.0/0
+
+    // useEffect(() => {
+    //     fetch(
+    //         `https://kitsu.io/api/edge/categories?page[limit]=100/include=attributes.name,id` // also make this with categories
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => setGenres(data["data"]))
+    //         .catch((err) => {
+    //             setError(err.message);
+    //             setGenres(null);
+    //         })
+    //         .finally(() => {
+    //             setLoading(false);
+    //         });
+    // }, []);
+
     useEffect(() => {
-        fetch(
-            `https://kitsu.io/api/edge/categories?page[limit]=100/include=attributes.name,id` // also make this with categories
-        )
+        fetch(`https://api.aniapi.com/v1/resources/1.0/0`, {
+            method: "GET",
+            headers: {
+                Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzODYiLCJuYmYiOjE2NDcwMjM5MzcsImV4cCI6MTY0OTYxNTkzNywiaWF0IjoxNjQ3MDIzOTM3fQ.ASKDWEhjwrxamRTT4MwHO0Dadr20lfn48QJuMg5p548",
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+        })
             .then((response) => response.json())
-            .then((data) => setGenres(data["data"]))
+            .then((data) => setGenres(data.data.genres))
             .catch((err) => {
                 setError(err.message);
                 setGenres(null);
@@ -48,9 +71,9 @@ const SelectGenres = ({ onSelect }) => {
                 {genres &&
                     genres.map((genre) => (
                         <Genre
-                            key={genre.id}
-                            genre={genre.attributes.title}
-                            count={genre.attributes.totalMediaCount}
+                            key={genre}
+                            genre={genre}
+                            count={9}
                             turned={false}
                             onSelect={onSelect}
                         />

@@ -2,15 +2,11 @@ import "./genre-list.style.css";
 
 import Genre from "../genre/genre.component";
 
-const GenreList = (props) => {
+const GenreList = ({ genres }) => {
     return (
         <div className="genre-list">
-            {props.genres.map((genre) => (
-                <Genre
-                    key={genre.id}
-                    genre={genre.attributes.title}
-                    turned={true}
-                />
+            {genres.map((genre) => (
+                <Genre key={genre} genre={genre} turned={true} />
             ))}
         </div>
     );

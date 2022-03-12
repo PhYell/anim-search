@@ -18,8 +18,8 @@ const PreviewList = ({ titles, season, year }) => {
                         key={title.id}
                         id={title.id}
                         type={title.type}
-                        name={title.attributes.canonicalTitle}
-                        image={title.attributes.posterImage.small}
+                        name={title.titles.rj}
+                        image={title.cover_image}
                     />
                 ))}
                 <div className={`line ${season} divider-line`}></div>
