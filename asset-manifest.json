@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ani-list/static/css/main.ae2b1574.css",
-    "main.js": "/ani-list/static/js/main.a5f0337c.js",
-    "index.html": "/ani-list/index.html",
-    "main.ae2b1574.css.map": "/ani-list/static/css/main.ae2b1574.css.map",
-    "main.a5f0337c.js.map": "/ani-list/static/js/main.a5f0337c.js.map"
+    "main.css": "/anim-search/static/css/main.ae2b1574.css",
+    "main.js": "/anim-search/static/js/main.a0f3906b.js",
+    "index.html": "/anim-search/index.html",
+    "main.ae2b1574.css.map": "/anim-search/static/css/main.ae2b1574.css.map",
+    "main.a0f3906b.js.map": "/anim-search/static/js/main.a0f3906b.js.map"
   },
   "entrypoints": [
     "static/css/main.ae2b1574.css",
-    "static/js/main.a5f0337c.js"
+    "static/js/main.a0f3906b.js"
   ]
 }
