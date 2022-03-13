@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className="header">
             <h1 className="app-name">
-                Anim<span>List</span>
+                anim<span>Search</span>
             </h1>
             <Nav />
         </div>

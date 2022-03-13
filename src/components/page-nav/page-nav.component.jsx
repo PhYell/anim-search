@@ -11,7 +11,7 @@ const PageNav = () => {
             {page > 0 ? (
                 <button
                     onClick={() =>
-                        navigate(`../ani-list/search/${parseInt(page) - 1}`, {
+                        navigate(`../search/${parseInt(page) - 1}`, {
                             replace: true,
                         })
                     }
@@ -25,7 +25,7 @@ const PageNav = () => {
 
             <button
                 onClick={() =>
-                    navigate(`../ani-list/search/${parseInt(page) + 1}`, {
+                    navigate(`../search/${parseInt(page) + 1}`, {
                         replace: true,
                     })
                 }

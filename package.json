@@ -1,7 +1,7 @@
 {
     "name": "ani-list",
     "version": "0.1.0",
-    "homepage": "https://PhYell.github.io/ani-list",
+    "homepage": "https://PhYell.github.io/anim-search",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.2",

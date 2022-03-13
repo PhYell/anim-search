@@ -5,16 +5,13 @@ import "./nav.style.css";
 const Nav = () => {
     return (
         <nav>
-            <NavLink className="nav-link" to={{ pathname: "/ani-list/" }}>
+            <NavLink className="nav-link" to={{ pathname: "../" }}>
                 Home
             </NavLink>
-            <NavLink
-                className="nav-link"
-                to={{ pathname: "/ani-list/search/0" }}
-            >
+            <NavLink className="nav-link" to={{ pathname: "../search/0" }}>
                 Search
             </NavLink>
-            <NavLink className="nav-link" to={{ pathname: "/ani-list/about" }}>
+            <NavLink className="nav-link" to={{ pathname: "../about" }}>
                 About
             </NavLink>
         </nav>

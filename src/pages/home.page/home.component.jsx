@@ -44,42 +44,6 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    // useEffect(() => {
-    //     fetch(
-    //         `https://kitsu.io/api/edge/anime?page[limit]=20&
-    //         page[offset]=0&filter[season]=${giveSeason(
-    //             month
-    //         )}&filter[seasonYear]=${year}&sort=popularityRank`
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => setTitles(data["data"]))
-    //         .catch((err) => {
-    //             setError(err.message);
-    //             setTitles(null);
-    //         })
-    //         .finally(() => {
-    //             setLoading(false);
-    //         });
-
-    //     fetch(
-    //         `https://kitsu.io/api/edge/anime?page[limit]=8&
-    //             page[offset]=0&filter[season]=${giveSeason(
-    //                 prevMonth
-    //             )}&filter[seasonYear]=${prevYear}&sort=popularityRank`
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => setTitlesFromPreviousSeason(data["data"]))
-    //         .catch((err) => {
-    //             setError(err.message);
-    //             setTitlesFromPreviousSeason(null);
-    //         })
-    //         .finally(() => {
-    //             setLoading(false);
-    //         });
-    // }, []);
-
-    //weekly_airing_day
-
     useEffect(() => {
         fetch(
             `https://api.aniapi.com/v1/anime?season=${giveSeason(
