@@ -20,13 +20,16 @@ const App = () => {
         <div>
             <Header />
             <Routes>
-                <Route path="./" element={<HomePage />} />
-                <Route path="./search/:page" element={<SearchPage />} />
+                <Route path="anim-search/" element={<HomePage />} />
                 <Route
-                    path="./description/:type/:id"
+                    path="anim-search/search/:page"
+                    element={<SearchPage />}
+                />
+                <Route
+                    path="anim-search/description/:type/:id"
                     element={<DescriptionPage />}
                 />
-                <Route path="./about" element={<SearchPage />} />
+                <Route path="anim-search/about" element={<SearchPage />} />
                 {/* <Route path="*" element={<ErrorPage />} /> */}
             </Routes>
         </div>
